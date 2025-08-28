@@ -7,7 +7,12 @@ import { User } from './entities/user.entity';
 export class UsersService {
   private users: User[] = [];
 
-  create(createUserDto: CreateUserDto) {
+  /**
+   * Service Function to create a user.
+   * @param createUserDto
+   * @returns User
+   */
+  create(createUserDto: CreateUserDto): User {
     const newUser = new User();
     newUser.email = createUserDto.email;
     newUser.fullName = createUserDto.fullName;
@@ -19,6 +24,9 @@ export class UsersService {
     return newUser;
   }
 
+  /**
+   * Service Function to fetch all the users.
+   */
   findAll(): User[] | string {
     if(this.users.length > 0) {
       return this.users;
